@@ -13,7 +13,6 @@ export const useSyncExternalStoreWithSelector = <TData, TSelected = TData>(
     isEqual = Object.is
 ) => {
     const lastSelectedRef = React.useRef<TSelected>(undefined);
-    const lastSnapshotRef = React.useRef<TData>(undefined);
 
     /***** SELECTOR FUNCTION *****/
     const getSelectedSnapshot = () => {
@@ -22,7 +21,6 @@ export const useSyncExternalStoreWithSelector = <TData, TSelected = TData>(
         const _isEqual = isEqual(lastSelectedRef.current, selected);
         const _isSelectedSet = lastSelectedRef.current !== undefined;
         if (!_isEqual || !_isSelectedSet) {
-            lastSnapshotRef.current = snapshot;
             lastSelectedRef.current = selected;
         }
 
