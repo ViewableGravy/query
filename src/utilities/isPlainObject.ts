@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 function hasObjectPrototype(o: any): boolean {
     return Object.prototype.toString.call(o) === '[object Object]'
 }
